@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luka\\Documents\\repos\\shop api\\shop-management-system-api\\shop-management-system-api.csproj": {}
+    "C:\\Users\\Luka\\Documents\\repos\\shop-api\\shop-management-system-api\\shop-management-system-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luka\\Documents\\repos\\shop api\\shop-management-system-api\\shop-management-system-api.csproj": {
+    "C:\\Users\\Luka\\Documents\\repos\\shop-api\\shop-management-system-api\\shop-management-system-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luka\\Documents\\repos\\shop api\\shop-management-system-api\\shop-management-system-api.csproj",
+        "projectUniqueName": "C:\\Users\\Luka\\Documents\\repos\\shop-api\\shop-management-system-api\\shop-management-system-api.csproj",
         "projectName": "shop-management-system-api",
-        "projectPath": "C:\\Users\\Luka\\Documents\\repos\\shop api\\shop-management-system-api\\shop-management-system-api.csproj",
+        "projectPath": "C:\\Users\\Luka\\Documents\\repos\\shop-api\\shop-management-system-api\\shop-management-system-api.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luka\\Documents\\repos\\shop api\\shop-management-system-api\\obj\\",
+        "outputPath": "C:\\Users\\Luka\\Documents\\repos\\shop-api\\shop-management-system-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
