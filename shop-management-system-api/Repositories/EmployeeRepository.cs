@@ -8,16 +8,16 @@ namespace shop_management_system_api.Repositories
     public class EmployeeRepository : IEmployeeRepository
     {
        
-        private readonly ShopContext _shopContext;
+        private readonly MyShopContext _context;
 
-        public EmployeeRepository(ShopContext shopContext)
+        public EmployeeRepository(MyShopContext context)
         {
-            _shopContext = shopContext;
+            _context = context;
         }
 
         public void AddEmployee(Employee employee)
         {
-            _shopContext.Employees.Add(employee);
+            _context.Employees.Add(employee);
         }
     }
 }
