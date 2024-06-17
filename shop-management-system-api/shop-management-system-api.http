@@ -1,4 +1,4 @@
-@shop-management-system-api_HostAddress = https://localhost:7218
+# @shop-management-system-api_HostAddress = https://localhost:7218
 @shop_management_system_api_HostAddress = http://localhost:5091
 
 GET {{shop_management_system_api_HostAddress}}/weatherforecast/
@@ -6,10 +6,10 @@ Accept: application/json
 
 ###
 
-GET {{shop-management-system-api_HostAddress}}/weatherforecast
+# GET {{shop-management-system-api_HostAddress}}/weatherforecast
 
 ###
 
-GET {{shop-management-system-api_HostAddress}}/weatherforecast
+# GET {{shop-management-system-api_HostAddress}}/weatherforecast
 
 ###
