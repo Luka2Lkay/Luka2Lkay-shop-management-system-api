@@ -7,12 +7,12 @@ namespace shop_management_system_api.Repositories.Interfaces
     {
         public void AddEmployee(Employee employee);
 
-        public List<Employee> GetAll();
+        public Task<List<Employee>> GetAll();
 
-        public Employee GetEmployeeById(int id);
+        public Task<Employee> GetEmployeeById(int id);
 
-        public void RemoveEmployeeById(int id);
+        public Task<Employee> RemoveEmployeeById(int id);
 
-        public void UpdateEmployee(Employee employee);
+        public Task UpdateEmployee(Employee employee);
     }
 }

@@ -22,27 +22,34 @@ namespace shop_management_system_api.Services
 
         }
 
-        public  List<Employee> GetAll()
+        public async Task<List<Employee>> GetAll()
         {
-            return _employeeRepository.GetAll();
+            List<Employee> employees = await _employeeRepository.GetAll();
+
+            return employees;
         }
 
-        public List<Employee> GetActiveEmployees(Employee employee)
+        public async Task<List<Employee>> GetActiveEmployees()
         {
-            return  _employeeRepository.GetAll().Where(x => x.IsActive == true).ToList();
+            List<Employee> employees = await _employeeRepository.GetAll();
+
+            List<Employee> activeEmployees = employees.Where(x => x.IsActive == true).ToList();
+
+            return activeEmployees;
+
         }
-        public void RemoveEmployeeById(int id)
+        public  Task<Employee> RemoveEmployeeById(int id)
         {
-            var employee = _employeeRepository.GetEmployeeById(id);
+            return  _employeeRepository.RemoveEmployeeById(id);
         }
-        public Employee GetEmployeeById(int id)
+        public async Task<Employee> GetEmployeeById(int id)
         {
-            return _employeeRepository.GetEmployeeById(id);
+            return await _employeeRepository.GetEmployeeById(id);
         }
 
-        public void UpdateEmployee(Employee employee)
+        public async Task UpdateEmployee(Employee employee)
         {
-            _employeeRepository.UpdateEmployee(employee);
+           await _employeeRepository.UpdateEmployee(employee);
         }
 
     }

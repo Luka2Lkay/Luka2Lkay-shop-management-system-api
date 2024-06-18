@@ -6,10 +6,10 @@ namespace shop_management_system_api.Services.Interfaces
     {
         public void AddEmployee(Employee employee);
 
-        public List<Employee> GetAll();
-        public List<Employee> GetActiveEmployees(Employee employee);
-        public void RemoveEmployeeById(int id);
-        public Employee GetEmployeeById(int id);
-        public void UpdateEmployee(Employee employee);
+        public Task<List<Employee>> GetAll();
+        public Task<List<Employee>> GetActiveEmployees();
+        public Task<Employee> RemoveEmployeeById(int id);
+        public Task<Employee> GetEmployeeById(int id);
+        public Task UpdateEmployee(Employee employee);
     }
 }

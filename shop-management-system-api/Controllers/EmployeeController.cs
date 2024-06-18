@@ -17,19 +17,60 @@ namespace shop_management_system_api.Controllers
         }
 
         [HttpGet]
-        public List<Employee> GetAll()
+        public async Task<ActionResult<List<Employee>>> GetAll()
         {
-            List<Employee> employees = _employeeService.GetAll();
+            List<Employee> employees = await _employeeService.GetAll();
 
-            return employees;
+            return Ok(employees);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployeeById(int id)
         {
-            Employee employee = _employeeService.GetEmployeeById(id);
+            Employee employee = await _employeeService.GetEmployeeById(id);
+
+            if (employee == null) {
+
+                return NotFound();
+            }
 
             return Ok(employee);
+        }
+
+        [HttpGet("active-employees")]
+
+        public async Task<ActionResult<Employee>> GetActiveEmployees ()
+        {
+            List<Employee> employees = await _employeeService.GetActiveEmployees();
+
+            if (employees == null) { 
+            
+                return NotFound();
+            }
+
+            return Ok(employees);
+        }
+
+        [HttpPut]
+
+        public async Task UpdateEmployee (Employee employee)
+        {
+            await _employeeService.UpdateEmployee(employee);
+        }
+
+        [HttpDelete]
+
+        public async Task<ActionResult<Employee>> RemoveEmpoyeById (int id)
+        {
+
+            Employee result = await _employeeService.RemoveEmployeeById(id);
+
+            if (result == null) {
+
+                return NotFound();
+            }
+
+            return Ok("Deleted");
         }
     }
 }
