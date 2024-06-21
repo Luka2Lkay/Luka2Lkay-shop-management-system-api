@@ -20,7 +20,7 @@ namespace shop_management_system_api.Controllers
 
         [HttpGet("all-managers")]
 
-        public async Task<ActionResult<List<Manager>>> GetAll ()
+        public async Task<ActionResult<List<Manager>>> GetAll()
         {
             List<Manager> managers = await _managerService.GetAll();
 
@@ -43,6 +43,14 @@ namespace shop_management_system_api.Controllers
             Manager manager = await _managerService.GetManagerById(id);
 
             return Ok(manager);
+        }
+
+        [HttpGet("managers-with-employees")]
+        public async Task<ActionResult<List<Manager>>> ManagersWithEmployees()
+        {
+            List<Manager> managersWithEmployees = await _managerService.ManagersWithEmployees();
+
+            return Ok(managersWithEmployees);
         }
     }
 }
