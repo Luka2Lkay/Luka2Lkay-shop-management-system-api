@@ -83,9 +83,9 @@ namespace shop_management_system_api.Controllers
             return Ok(newEmployee);
         }
 
-        [HttpGet]
+        [HttpGet("employees-with-managers")]
 
-        public async Task<ActionResult<List<EmployeeDTO>>> EmployeeDTOs()
+        public async Task<ActionResult<List<EmployeeDTO>>> EmployeeWithManagers()
         {
             List<EmployeeDTO> employeeDTO = await _employeeService.EmployeeDTOs();
 
