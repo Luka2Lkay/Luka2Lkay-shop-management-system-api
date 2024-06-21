@@ -16,7 +16,7 @@ namespace shop_management_system_api.Controllers
             _employeeService = employeeService;
         }
 
-        [HttpGet]
+        [HttpGet("all-employees")]
         public async Task<ActionResult<List<Employee>>> GetAll()
         {
             List<Employee> employees = await _employeeService.GetAll();
