@@ -27,24 +27,6 @@ namespace shop_management_system_api.Services
             return activeManagers;
         }
 
-        public async Task<ManagerDTO> GetSelectedManagerInfo(int id)
-        {
-            Manager manager = await _managerRepository.GetManagerById(id);
-
-            if (manager == null)
-            {
-                throw new Exception("Not exist");
-                }
-
-            ManagerDTO selectedManagerInfo = new ManagerDTO()
-            {
-                EmployeeNumber = manager.EmployeeNumber,
-                FullName = manager.FullName,
-            };
-
-            return selectedManagerInfo;
-        }
-
         public  async Task<List<Manager>> GetAll()
         {
             List<Manager> managers = await _managerRepository.GetAll();

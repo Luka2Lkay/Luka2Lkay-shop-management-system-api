@@ -27,16 +27,6 @@ namespace shop_management_system_api.Controllers
             return Ok(managers);
         }
 
-
-        [HttpGet("selected-info")]
-
-        public async Task<ActionResult<ManagerDTO>> GetSelectedManagerInfo(int id)
-        {
-            ManagerDTO selectedInfo = await _managerService.GetSelectedManagerInfo(id);
-
-            return Ok(selectedInfo);
-        }
-
         [HttpPost]
 
         public async Task<ActionResult<Manager>> AddManager(Manager manager)
