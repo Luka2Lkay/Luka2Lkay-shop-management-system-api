@@ -8,7 +8,7 @@ namespace shop_management_system_api.Services.Interfaces
 
         public Task<List<Employee>> GetAll();
 
-        public Task<List<EmployeeDTO>> EmployeeDTOs();
+        public Task<List<EmployeeDTO>> EmployeesWithManagers();
         public Task<List<Employee>> GetActiveEmployees();
         public Task<Employee> RemoveEmployeeById(int id);
         public Task<Employee> GetEmployeeById(int id);

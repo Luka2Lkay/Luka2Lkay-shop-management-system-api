@@ -74,20 +74,17 @@ namespace shop_management_system_api.Controllers
         }
 
         [HttpPost]
-
         public async Task<ActionResult<Employee>> AddEmployee(Employee employee)
         {
-
             Employee newEmployee = await _employeeService.AddEmployee(employee);
 
             return Ok(newEmployee);
         }
 
         [HttpGet("employees-with-managers")]
-
-        public async Task<ActionResult<List<EmployeeDTO>>> EmployeeWithManagers()
+        public async Task<ActionResult<List<EmployeeDTO>>> EmployeesWithManagers()
         {
-            List<EmployeeDTO> employeeDTO = await _employeeService.EmployeeDTOs();
+            List<EmployeeDTO> employeeDTO = await _employeeService.EmployeesWithManagers();
 
             return Ok(employeeDTO);
         }

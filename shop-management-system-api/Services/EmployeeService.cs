@@ -35,18 +35,17 @@ namespace shop_management_system_api.Services
             return employees;
         }
 
-        public async Task<List<EmployeeDTO>> EmployeeDTOs()
+        public async Task<List<EmployeeDTO>> EmployeesWithManagers()
         {
             List<Employee> employees = await _employeeRepository.GetAll();
            
-
-            List<EmployeeDTO> employeeDTOs = new List<EmployeeDTO>();
+            List<EmployeeDTO> employeesWithManagers = new List<EmployeeDTO>();
 
                 foreach (Employee employee in  employees)
             {
-                Manager manager =await  _managerRepository.GetManagerById(employee.ManagerId);
+                Manager manager = await  _managerRepository.GetManagerById(employee.ManagerId);
 
-                EmployeeDTO employeeDTO = new EmployeeDTO
+                EmployeeDTO employeeWithManager = new EmployeeDTO
                 {
                     EmployeeNumber = employee.EmployeeNumber,
                     Title = employee.Title,
@@ -58,10 +57,10 @@ namespace shop_management_system_api.Services
                     IsActive = employee.IsActive,
                 };
 
-                employeeDTOs.Add(employeeDTO);
+                employeesWithManagers.Add(employeeWithManager);
             }
             
-                return employeeDTOs;
+                return employeesWithManagers;
 
         }
 
