@@ -5,7 +5,7 @@ namespace shop_management_system_api.Repositories.Interfaces
 {
     public interface IEmployeeRepository
     {
-        public void AddEmployee(Employee employee);
+        public Task<Employee> AddEmployee(Employee employee);
 
         public Task<List<Employee>> GetAll();
 

@@ -72,5 +72,24 @@ namespace shop_management_system_api.Controllers
 
             return Ok("Deleted");
         }
+
+        [HttpPost]
+
+        public async Task<ActionResult<Employee>> AddEmployee(Employee employee)
+        {
+
+            Employee newEmployee = await _employeeService.AddEmployee(employee);
+
+            return Ok(newEmployee);
+        }
+
+        [HttpGet]
+
+        public async Task<ActionResult<List<EmployeeDTO>>> EmployeeDTOs()
+        {
+            List<EmployeeDTO> employeeDTO = await _employeeService.EmployeeDTOs();
+
+            return Ok(employeeDTO);
+        }
     }
 }

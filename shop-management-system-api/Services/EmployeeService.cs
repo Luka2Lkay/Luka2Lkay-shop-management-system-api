@@ -3,22 +3,28 @@ using shop_management_system_api.Services.Interfaces;
 using shop_management_system_api.Repositories;
 using shop_management_system_api.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace shop_management_system_api.Services
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeService(IEmployeeRepository employeeRepository)
+        private readonly IManagerRepository _managerRepository;
+        public EmployeeService(IEmployeeRepository employeeRepository, IManagerRepository managerRepository)
         {
 
             _employeeRepository = employeeRepository;
+            _managerRepository = managerRepository;
         }
 
-        public void AddEmployee(Employee employee)
+        public async Task<Employee> AddEmployee(Employee employee)
         {
 
-            _employeeRepository.AddEmployee(employee);
+          Employee newEmployee = await _employeeRepository.AddEmployee(employee);
+
+            return newEmployee;
 
         }
 
@@ -27,6 +33,36 @@ namespace shop_management_system_api.Services
             List<Employee> employees = await _employeeRepository.GetAll();
 
             return employees;
+        }
+
+        public async Task<List<EmployeeDTO>> EmployeeDTOs()
+        {
+            List<Employee> employees = await _employeeRepository.GetAll();
+           
+
+            List<EmployeeDTO> employeeDTOs = new List<EmployeeDTO>();
+
+                foreach (Employee employee in  employees)
+            {
+                Manager manager =await  _managerRepository.GetManagerById(employee.ManagerId);
+
+                EmployeeDTO employeeDTO = new EmployeeDTO
+                {
+                    EmployeeNumber = employee.EmployeeNumber,
+                    Title = employee.Title,
+                    FullName = employee.FullName,
+                    CurrentManager = manager.FullName,
+                    DOB = employee.DOB,
+                    Gender = employee.Gender,
+                    Email = employee.Email,
+                    IsActive = employee.IsActive,
+                };
+
+                employeeDTOs.Add(employeeDTO);
+            }
+            
+                return employeeDTOs;
+
         }
 
         public async Task<List<Employee>> GetActiveEmployees()

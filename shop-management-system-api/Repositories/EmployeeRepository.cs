@@ -17,10 +17,20 @@ namespace shop_management_system_api.Repositories
             _context = context;
         }
 
-        public void AddEmployee(Employee employee)
+        public async Task<Employee> AddEmployee(Employee employee)
         {
+            Employee addEmployee = await _context.Employees.FindAsync(employee.ManagerId);
+
+            if (addEmployee == null) {
+
+                throw new ArgumentException("No manager");
+            
+            }
+
             _context.Employees.Add(employee);
             _context.SaveChanges();
+
+            return employee;
         }
 
         public async Task<List<Employee>> GetAll()
