@@ -52,5 +52,21 @@ namespace shop_management_system_api.Controllers
 
             return Ok(managersWithEmployees);
         }
+
+        [HttpDelete("delete")]
+        public async Task<ActionResult<Manager>> RemoveManagerById(int id)
+        {
+
+            Manager manager = await _managerService.RemoveManagerById(id);
+
+            if (manager == null) {
+
+                return NotFound();
+           
+            }
+
+            return Ok("Deleted!");
+
+        }
     }
 }
