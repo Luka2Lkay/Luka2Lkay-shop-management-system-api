@@ -19,15 +19,29 @@ namespace shop_management_system_api.Repositories
 
         public async Task<Employee> AddEmployee(Employee employee)
         {
-            Employee addEmployee = await _context.Employees.FindAsync(employee.ManagerId);
+            Employee newEmployee = new Employee()
+            {
+                Id = employee.Id,
+                ManagerId = employee.ManagerId,
+                EmployeeNumber = employee.EmployeeNumber,
+                FullName = employee.FullName,
+                Title = employee.Title,
+                DOB = employee.DOB,
+                Gender = employee.Gender,
+                Email = employee.Email,
+                IsActive = employee.IsActive,
+            };
+        
+            Manager manager = await _context.Managers.FindAsync(newEmployee.ManagerId);
 
-            if (addEmployee == null) {
+            if (manager == null)
+            {
 
-                throw new ArgumentException("No manager");
-            
+                throw new ArgumentException("Invalid managerId");
+
             }
 
-            _context.Employees.Add(employee);
+            _context.Employees.Add(newEmployee);
             _context.SaveChanges();
 
             return employee;

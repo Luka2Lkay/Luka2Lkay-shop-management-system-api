@@ -29,24 +29,20 @@ namespace shop_management_system_api.Services
             return activeManagers;
         }
 
-        public async Task<List<Manager>> ManagersWithEmployees() {
+        public async Task<List<Manager>> ManagersWithEmployees()
+        {
 
             List<Manager> managers = await _managerRepository.GetAll();
-            List<Manager> managersWith = new List<Manager>();
+            List<Manager> managersWithEmployees = new List<Manager>();
             List<Employee> employees = await _employeeRepository.GetAll();
             List<Employee> newEmployees = new List<Employee>();
 
-            foreach (Manager manager in managers)
+            foreach (Employee employee in employees)
             {
-                Employee employee = employees.FirstOrDefault(x => x.ManagerId == manager.Id); // fix here
-
-                if (employee == null) {
-
-                    throw new Exception("No matching employee");
-                }
-
                 Employee newEmployee = new Employee()
                 {
+                    Id = employee.Id,
+                    ManagerId = employee.ManagerId,
                     EmployeeNumber = employee.EmployeeNumber,
                     FullName = employee.FullName,
                     Title = employee.Title,
@@ -57,26 +53,35 @@ namespace shop_management_system_api.Services
                 };
 
                 newEmployees.Add(newEmployee);
+            }
+
+            foreach (Manager manager in managers)
+            {
+
+                List<Employee> managedEmployees = newEmployees.Where(employee => employee.ManagerId == manager.Id).ToList();
+
 
                 Manager newManager = new Manager()
                 {
+                    Id = manager.Id,
                     EmployeeNumber = manager.EmployeeNumber,
                     FullName = manager.FullName,
                     DOB = manager.DOB,
                     Gender = manager.Gender,
                     Email = manager.Email,
                     IsActive = manager.IsActive,
-                    ManagedEmployees = newEmployees
+                    ManagedEmployees = managedEmployees
                 };
 
-                managersWith.Add(newManager);
+                managersWithEmployees.Add(newManager);
+
             }
 
-            return managersWith;
+            return managersWithEmployees;
 
         }
 
-        public  async Task<List<Manager>> GetAll()
+        public async Task<List<Manager>> GetAll()
         {
             List<Manager> managers = await _managerRepository.GetAll();
 
