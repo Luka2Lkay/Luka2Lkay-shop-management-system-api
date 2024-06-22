@@ -51,14 +51,14 @@ namespace shop_management_system_api.Controllers
             return Ok(employees);
         }
 
-        [HttpPut]
+        [HttpPut("update")]
 
         public async Task UpdateEmployee (Employee employee)
         {
             await _employeeService.UpdateEmployee(employee);
         }
 
-        [HttpDelete]
+        [HttpDelete("delete")]
 
         public async Task<ActionResult<Employee>> RemoveEmpoyeById (int id)
         {
@@ -73,7 +73,7 @@ namespace shop_management_system_api.Controllers
             return Ok("Deleted");
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public async Task<ActionResult<Employee>> AddEmployee(Employee employee)
         {
             Employee newEmployee = await _employeeService.AddEmployee(employee);
