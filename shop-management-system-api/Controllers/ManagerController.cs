@@ -27,7 +27,7 @@ namespace shop_management_system_api.Controllers
             return Ok(managers);
         }
 
-        [HttpPost]
+        [HttpPost("add")]
 
         public async Task<ActionResult<Manager>> AddManager(Manager manager)
         {
@@ -36,7 +36,7 @@ namespace shop_management_system_api.Controllers
             return Ok(newManager);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
 
         public async Task<ActionResult<Manager>> GetManagerById(int id)
         {
