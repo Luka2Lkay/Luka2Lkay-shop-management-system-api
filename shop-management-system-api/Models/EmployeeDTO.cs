@@ -2,6 +2,7 @@
 {
     public class EmployeeDTO
     {
+        public int Id { get; set; }
         public required string EmployeeNumber { get; set; }
         public required string Title { get; set; }
         public required string FullName { get; set; }

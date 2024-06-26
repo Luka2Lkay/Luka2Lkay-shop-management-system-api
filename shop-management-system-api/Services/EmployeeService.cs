@@ -47,6 +47,7 @@ namespace shop_management_system_api.Services
 
                 EmployeeDTO employeeWithManager = new EmployeeDTO
                 {
+                    Id = employee.Id,
                     EmployeeNumber = employee.EmployeeNumber,
                     Title = employee.Title,
                     FullName = employee.FullName,

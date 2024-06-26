@@ -70,7 +70,7 @@ namespace shop_management_system_api.Controllers
                 return NotFound();
             }
 
-            return Ok("Deleted!");
+            return Ok(result);
         }
 
         [HttpPost("add")]

@@ -53,6 +53,15 @@ namespace shop_management_system_api.Controllers
             return Ok(managersWithEmployees);
         }
 
+        [HttpPost("manager-id")]
+
+        public async Task<int> GetManagerIdByName(Manager manager)
+        {
+            int managerId = await _managerService.GetManagerIdByName(manager);
+
+            return managerId;
+        }
+
         [HttpDelete("delete")]
         public async Task<ActionResult<Manager>> RemoveManagerById(int id)
         {

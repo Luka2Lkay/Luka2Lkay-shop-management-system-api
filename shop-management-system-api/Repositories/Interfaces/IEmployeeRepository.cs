@@ -14,5 +14,6 @@ namespace shop_management_system_api.Repositories.Interfaces
         public Task<Employee> RemoveEmployeeById(int id);
 
         public Task UpdateEmployee(Employee employee);
+
     }
 }
