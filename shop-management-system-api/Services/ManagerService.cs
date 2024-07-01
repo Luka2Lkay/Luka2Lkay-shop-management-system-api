@@ -106,7 +106,7 @@ namespace shop_management_system_api.Services
             await _managerRepository.UpdateManager(manager);
         }
 
-        public async Task<int> GetManagerIdByName(Manager manager)
+        public async Task<int> GetManagerId(Manager manager)
         {
             Manager manager1 = await _managerRepository.GetManagerById(manager.Id);
 

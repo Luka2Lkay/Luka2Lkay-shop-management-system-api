@@ -57,7 +57,7 @@ namespace shop_management_system_api.Controllers
 
         public async Task<int> GetManagerIdByName(Manager manager)
         {
-            int managerId = await _managerService.GetManagerIdByName(manager);
+            int managerId = await _managerService.GetManagerId(manager);
 
             return managerId;
         }
