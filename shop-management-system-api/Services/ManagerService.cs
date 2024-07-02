@@ -95,7 +95,6 @@ namespace shop_management_system_api.Services
             return manager;
         }
 
-        //Do I really want to delete the manager? Think! Think! Decide Lukhanyo
         public async Task<Manager> RemoveManagerById(int id)
         {
             return await _managerRepository.RemoveManagerById(id);
@@ -106,11 +105,5 @@ namespace shop_management_system_api.Services
             await _managerRepository.UpdateManager(manager);
         }
 
-        public async Task<int> GetManagerId(Manager manager)
-        {
-            Manager manager1 = await _managerRepository.GetManagerById(manager.Id);
-
-            return manager1.Id;
-        }
     }
 }
