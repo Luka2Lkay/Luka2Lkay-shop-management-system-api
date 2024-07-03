@@ -84,6 +84,7 @@ namespace shop_management_system_api.Repositories
             {
 
                 selectedEmployee.EmployeeNumber = employee.EmployeeNumber;
+                selectedEmployee.ManagerId = employee.ManagerId;
                 selectedEmployee.FullName = employee.FullName;
                 selectedEmployee.Title = employee.Title;
                 selectedEmployee.DOB = employee.DOB;
