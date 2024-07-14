@@ -32,7 +32,7 @@ namespace shop_management_system_api.Repositories
                 IsActive = employee.IsActive,
             };
         
-            Manager manager = await _context.Managers.FindAsync(newEmployee.ManagerId);
+            Manager? manager = await _context.Managers.FindAsync(newEmployee.ManagerId);
 
             if (manager == null)
             {
