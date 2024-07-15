@@ -80,7 +80,9 @@ namespace shop_management_system_api.Services
         }
         public async Task<Employee> GetEmployeeById(int id)
         {
-            return await _employeeRepository.GetEmployeeById(id);
+           Employee employee  = await _employeeRepository.GetEmployeeById(id);
+
+            return employee;
         }
 
         public async Task UpdateEmployee(Employee employee)
