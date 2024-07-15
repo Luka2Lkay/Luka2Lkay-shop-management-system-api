@@ -63,14 +63,14 @@ namespace shop_management_system_api.Controllers
         public async Task<ActionResult<Employee>> RemoveEmpoyeById (int id)
         {
 
-            Employee result = await _employeeService.RemoveEmployeeById(id);
+            Employee employee = await _employeeService.RemoveEmployeeById(id);
 
-            if (result == null) {
+            if (employee == null) {
 
                 return NotFound();
             }
 
-            return Ok(result);
+            return Ok(employee);
         }
 
         [HttpPost("add")]
