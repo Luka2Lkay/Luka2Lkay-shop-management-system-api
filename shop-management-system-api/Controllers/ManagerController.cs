@@ -65,7 +65,7 @@ namespace shop_management_system_api.Controllers
            
             }
 
-            return Ok("Deleted!");
+            return Ok(manager);
 
         }
 
